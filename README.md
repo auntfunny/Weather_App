@@ -1,16 +1,21 @@
-# React + Vite
+# Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Descrition
 
-Currently, two official plugins are available:
+Weather App based on IP location, with a 5 day forecast, daily information and a search bar to find other cities
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Deployment
 
-## React Compiler
+[https://weather-8uf73s63f-anthony-blacks-projects-a65df513.vercel.app/](https://weather-8uf73s63f-anthony-blacks-projects-a65df513.vercel.app/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📁 Repository
 
-## Expanding the ESLint configuration
+[https://github.com/auntfunny/Weather_App](https://github.com/auntfunny/Weather_App)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚙️ Charactaristics
+
+- Dynamic IP info to find user country
+- Consumes an API for IP info, and another for weather info
+- Search feature by city name, country, or both
+- Unit changes buttons to see results in Metric or Imperial units
+- Set to me button to automatically reset the search to the users location

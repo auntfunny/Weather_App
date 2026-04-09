@@ -12,19 +12,27 @@ const Search = ({ setToggleSearch }) => {
   };
   const handleSumbit = (event) => {
     event.preventDefault();
-    let exactCities = cities.filter(
-      (city) =>
-        city.name.toLowerCase() === citySearch.toLowerCase() ||
-        city.country_code === citySearch.toUpperCase(),
+    let searchCities = cities.filter(
+      (city) => {
+        const searching = citySearch.trim().toLowerCase();
+        const current = `${city.name} ${city.country}`.toLowerCase();
+        let found = false;
+
+        if (current.includes(searching)) {
+          found = true;
+        }
+
+        const words = searching.split(" ").filter(Boolean);
+        if(words.every(word => current.includes(word))){
+          found = true;
+        }
+
+        return found;
+      },
     );
-    let otherCities = cities.filter(
-      (city) =>
-        city.name.toLowerCase().includes(citySearch.toLowerCase()) ||
-        city.country_code.includes(citySearch.toUpperCase()),
-    );
-    otherCities = otherCities.filter((city) => !exactCities.includes(city));
-    setCityList([...exactCities, ...otherCities]);
+    setCityList([...searchCities]);
   };
+  
 
   return (
     <div className="absolute flex flex-col z-30 p-8 pt-18 items-center bg-bg2 w-full h-screen md:h-96 md:pb-5 lg:h-screen lg:w-sm">
