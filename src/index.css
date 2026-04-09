@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+
+    --color-bg1: #100e1d;
+    --color-bg2: #1e213a;
+    --color-text1: #e7e7eb;
+    --color-text2: #a09fb1;
+    --color-button1: #6e707a;
+    --color-button2: #4b4d61;
+    --color-button3: #585676;
+    --color-accYellow: #ffec65;
+    --color-accBlue: #3C47E9;
+
+    --font-raleway: "Raleway", serif;
+}
