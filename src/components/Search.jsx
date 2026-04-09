@@ -15,7 +15,7 @@ const Search = ({ setToggleSearch }) => {
     let searchCities = cities.filter(
       (city) => {
         const searching = citySearch.trim().toLowerCase();
-        const current = `${city.name} ${city.country}`.toLowerCase();
+        const current = `${city.name} ${city.country} ${city.country_code}`.toLowerCase();
         let found = false;
 
         if (current.includes(searching)) {
