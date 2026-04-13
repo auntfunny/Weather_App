@@ -7,7 +7,7 @@ import Search from "./Search";
 const Today = () => {
   const [toggleSearch, setToggleSearch] = useState(false);
   const currentDate = new Date().toString().split(" ").slice(0, 3).join(" ");
-  const { metric, city, weather, loading, setToMe } = useWeather();
+  const { metric, city, weather, loading, setToMe, error } = useWeather();
   let degrees = 0;
 
   if (!loading && weather) {
@@ -21,7 +21,7 @@ const Today = () => {
   return (
     <aside className="flex flex-col md:flex-row lg:flex-col justify-around items-center bg-bg2 w-full h-screen md:h-96 md:pb-5 lg:h-screen lg:w-sm lg:min-w-sm ">
       {toggleSearch && <Search setToggleSearch={setToggleSearch} /> }
-      <div className="flex flex-col items-center w-full md:w-1/2 lg:w-full">
+      {error ? <p className="text-text1 p-3 text-2xl text-center">Oh no, something's not right! Please try again later.</p> : <div className="flex flex-col items-center w-full md:w-1/2 lg:w-full">
         <header className="flex items-end justify-around w-full">
           <button
             onClick={() => setToggleSearch(true)}
@@ -56,8 +56,8 @@ const Today = () => {
             />
           )}
         </div>
-      </div>
-      <div className="flex flex-col items-center">
+      </div>}
+      {!error && <div className="flex flex-col items-center">
         <h1 className="text-9xl font-medium text-text1 pb-6">
           {loading ? "--" : degrees.toFixed(0)}
           <span className="text-6xl text-text2">&deg;{metric ? "C" : "F"}</span>
@@ -86,7 +86,7 @@ const Today = () => {
             <p>{city.name}, {city.country_code}</p>
           )}
         </div>
-      </div>
+      </div>}
     </aside>
   );
 };

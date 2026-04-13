@@ -6,7 +6,7 @@ import WindCard from "./WindCard";
 import HumidityCard from "./HumidityCard";
 
 const WeatherDetails = () => {
-  const { weather, metric, forecast, loading } = useWeather();
+  const { weather, metric, forecast, loading, error } = useWeather();
   const [fiveDayForecast, setFiveDayForecast] = useState([]);
 
 
@@ -31,7 +31,7 @@ const WeatherDetails = () => {
   return (
     <div className="flex flex-col items-center w-full min-h-screen bg-bg1">
       <UnitButtons />
-      <section className="w-full py-2">
+      {error ? <p className="text-text1 p-3 text-2xl text-center">Uh oh, looks like something went wrong. Please try again later.</p> : <section className="w-full py-2">
         <ul className="flex justify-center gap-4 w-full px-2">
           {loading
             ? Array(5)
@@ -52,8 +52,8 @@ const WeatherDetails = () => {
                 <ForecastCard day={day} key={index} />
               ))}
         </ul>
-      </section>
-      <section className="py-4 w-xs md:w-2xl">
+      </section>}
+      {!error && <section className="py-4 w-xs md:w-2xl">
         <h2 className="text-2xl text-text1 font-bold text-start">
           Today's Highlights
         </h2>
@@ -107,7 +107,7 @@ const WeatherDetails = () => {
             
           </div>
         )}
-      </section>
+      </section>}
     </div>
   );
 };
